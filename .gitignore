@@ -1,14 +1,15 @@
 *.out
 *.log
 *.fls
-<<<<<<< Updated upstream
 *.log
 
 BigHW2/
 files\ for\ moodle/
 week\ 1/
 week\ 2/
-=======
 *.fdb_latexmk
 *.synctex.gz
->>>>>>> Stashed changes
+*.fdb_latexmk
+*.aux
+*.synctex.gz
+TheoreticalMechanics_HW_week2_simulation.ipynb
