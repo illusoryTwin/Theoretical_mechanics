@@ -4,6 +4,8 @@
 \usepackage{caption} % For custom captions
 \usepackage{amsmath}
 \usepackage{multicol}
+\usepackage{subcaption}
+
 
 \title{Theoretical Mechanics: Week Homework 8}
 \author{Ekaterina Mozhegova}
@@ -15,6 +17,11 @@
 
 \section{Link}
 \href{https://github.com/illusoryTwin/Theoretical_mechanics/tree/master/hw7}{Link to the github repository containing all the materials}
+
+\href{https://colab.research.google.com/drive/16a0Ly4ZbjH2aNNC061sgZPgdEl7f_WWF?usp=sharing}{Colab}
+
+\section{Tools used for the tasks}
+Python (sympy).
 
 \section{Task 1}
 
@@ -42,94 +49,60 @@ $\psi = 0.6$ (cm), where $\psi$ is rolling friction.
 \textbf{Research object:} A system of a body A, wheels B, wheel D\\
 \textbf{Motion:} A - plane motion, B - rotational motion, D - rotational and plane motions\\
 \textbf{Force analysis:} $F_\text{fr} = \psi N$, 
-% F_\text{grav} = m_2 g s$\\
+
 \textbf{Solution:}
 
-\[T = A \text{, where } T = \sum T_i, A = \sum A_i\]
+Let's solve the task using Euler-Lagrange method. 
 
-
-\[
-T = T_A + T_{\text{B\_rot}} + T_{\text{D\_rot}} + T_D
-\]
-
-\[
-h = \sin\left(\frac{s \cdot 180}{\pi \cdot r_b}\right) \cdot R_b
-\]
-
-\[
-T_A = \frac{m_a \cdot \text{dot\_s}^2}{2}
-\]
-
-% \[
-% T_{\text{B\_rot}} = \frac{\left(\frac{\text{\dot{s}}}{r}\right)^2 \times J_b}{2}
-% \]
-
-% \[
-% T_{\text{D\_rot}} = \frac{m_d \times \left(\frac{25}{16} \times \text{\dot{s}}^2 \times \left(FK^2 - h^2\right)\right)}{4}
-% \]
-
-% \[
-% T_D = \frac{m_d \times \left(\frac{25}{16} \times \text{dot\_s}^2 \times \left(FK^2 - h^2\right)\right)}{2}
-% \]
-
-
-
-
+First, we need to define the kinetic energy of the system. 
 
 \begin{align*}
-    y_d &= l \sin(\alpha) & \dot{y}_d &= l \dot{\alpha} \cos(\alpha) \\
-    x_d &= l \cos(\alpha) & \dot{x}_d &= -l \dot{\alpha} \sin(\alpha)
+  T &= T_A + T_{B_{\text{rot}}} + T_{D_{\text{rot}}} + T_D \\
+  T_A &= \frac{m_a \dot{s}^2}{2} \\
+  T_{B_{\text{rot}}} &= \frac{(\frac{\dot{s}}{r})^2 \cdot J_b}{2} \\
+  T_{D_{\text{rot}}} &= \frac{m_d V_d^2}{4} \\
+  T_D &= \frac{m_d V_d^2}{2} \\
+\end{align*}
+  
+Define the potential energy:
+\begin{align*}
+  V &= -m_a g s \\
 \end{align*}
 
+Them, the Lagrangian is the following:
 
-\[ \dot \alpha = \omega = \dot \alpha = \dfrac{v_b}{2l \cos \alpha}\]
+\begin{align*}
+  L &= T - V \\
+\end{align*}
 
-\[V_d^2 = (l \cos(\alpha) \dot{\alpha})^2 + (-l \sin(\alpha) \dot{\alpha})^2 = l^2 (\dot{\alpha})^2 = l \omega^2\]
+The generalized force is of the friction force origin. 
+\begin{align*}
+  \frac{dx}{ds} &= \frac{dK}{ds} \\
+  F_{\text{fr}} &= c m_d g \\
+  Q_{\text{fr}} &= -F_{\text{fr}} \frac{dx}{ds} \\
+\end{align*}
 
-\[V_d^2 = l^2 \omega^2 = l^2 \cdot \frac{v_b^2}{4l^2 \cos^2(\alpha)}\]
+Calculate partial derivatives of the Lagrangian with respect to generalized coordinates and velocities.
 
-\[T_\text{rot} = \dfrac{J \omega^2}{2} = \dfrac{m \rho^2 \omega^2}{2} = \dfrac{m \rho^2}{2} \dfrac{V_b^2}{4l^2 \cos(\alpha)^2}\]
-
-\[T_1 = T + T_{\text{rot}} = \frac{mV_d^2}{2} + \frac{J \omega^2}{2} = \frac{m V_b^2}{2 \cdot 4 \cos^2(\alpha)} + \frac{m \rho^2 V_b^2}{2 \cdot 4l^2 \cos^2(\alpha)}\]
-
-\[T_\text{tot} = 2T_1 = 2 (\frac{m V_b^2}{2 \cdot 4 \cos^2(\alpha)} + \frac{m \rho^2 V_b^2}{2 \cdot 4l^2 \cos^2(\alpha)}) = \frac{m V_b^2}{4 \cos^2(\alpha)} + \frac{m \rho^2 V_b^2}{4l^2 \cos^2(\alpha)}\]
-
-\textbf{Work:}
-
-2 gravitational forces do job (of a rod 1 and of a rod 2).
-
-Due to the symmetry:
-
-\[A_\text{tot} = 2A_G = 2 mg \Delta h = 2mg ( \frac{h}{2} - l \sin(\alpha))\]
- 
-\begin{enumerate}
-  \item When B hits the floor, $\alpha = 0$, so $A_\text{tot} = 2 m g \frac{h}{2} = mgh$
-    \begin{center}
-      For $\alpha = 0$ we have: $\cos(\alpha) = 1$, $\sin(\alpha) = 0$.
-    \end{center}
-    \[ \frac{m V_b^2}{4 \cos^2(\alpha)} + \frac{m \rho^2 V_b^2}{4l^2 \cos^2(\alpha)} = mgh\]
-    \[ \frac{m V_b^2}{4 \cdot 1} (1 + \frac{\rho^2}{l^2}) = mgh\]
-    \[ \frac{V_b^2}{4} (\frac{l^2 + \rho^2}{l^2}) = gh\]
-    \[ V_b = \sqrt{\dfrac{4l^2gh}{l^2 + \rho^2}} = 2l \sqrt{\dfrac{gh}{l^2 + \rho^2}}\]
-    \[ \text{So, } V_b = 2l \sqrt{\dfrac{gh}{l^2 + \rho^2}}\]
+Apply the Euler-Lagrange equations to find the equations of motion.
+$\dfrac{\partial L}{\partial \dot{s}}$, $\dfrac{\partial L}{\partial s}$.
 
 
-  \item When B  is at the distance $ \frac{1}{2} h$ from the floor. 
-    \[\sin(\alpha) = \dfrac{\frac{h}{2}}{2l} = \dfrac{h}{4l}\]
-    \[\text{Thus, } \cos(\alpha)^2 = 1 - \sin(\alpha)^2 = \dfrac{16l^2 - h^2}{16l^2}\]
-    \[ \frac{m V_b^2}{4 \cdot \dfrac{16l^2 - h^2}{16l^2}} (\dfrac{\rho^2 + l^2}{l^2}) = 2mg(\frac{h}{2} - l \sin(\alpha))\]
-    \[ \frac{m V_b^2}{\dfrac{16l^2 - h^2}{4l^2}} (\dfrac{\rho^2 + l^2}{l^2}) = 2mg(\frac{h}{2} - l \frac{h}{4l})\]
-    \[ \frac{4 mV_b^2 (l^2+\rho^2)}{16l^2 - h^2} = \dfrac{mgh}{2}\]
-    \[ \frac{4 V_b^2 (l^2+\rho^2)}{16l^2 - h^2} = \dfrac{gh}{2}\]
-    \[ V_b = \sqrt{\dfrac{gh(16l^2-h^2)}{2 \cdot 4(l^2 + \rho^2)}} = \dfrac{1}{2} \sqrt{\dfrac{gh(16l^2 - h^2)}{2(l^2 + \rho^2)}}\]
-    \[ \text{So, } V_b = \dfrac{1}{2} \sqrt{\dfrac{gh(16l^2 - h^2)}{2(l^2 + \rho^2)}}\]
-\end{enumerate}
+Apply the Euler-Lagrange equations to find the equations of motion.
 
-\textbf{Answer:}
-\begin{enumerate}
-  \item \[V_b = 2l \sqrt{\dfrac{gh}{l^2 + \rho^2}}\]
-  \item \[V_b = \dfrac{1}{2} \sqrt{\dfrac{gh(16l^2 - h^2)}{2(l^2 + \rho^2)}}\]
-\end{enumerate}
+
+\[\frac{d}{dt} \left( \frac{\partial L}{\partial \dot{s}} \right) - \frac{\partial L}{\partial s} = Q\]
+
+Solving the system computationally will provide us with the results below.
+
+\subsection{Plot}
+
+\includegraphics[scale=0.5]{plots.png}
+
+\subsection{Simulation}
+
+\includegraphics[scale=0.3]{hw8_simulation.png}{\centering}
+
 
 \section{Task 2}
 
@@ -202,7 +175,73 @@ Solving the system computationally will provide us with the results below.
 
 
 \subsection{Plots}
+\includegraphics[scale=0.25]{task2_plots.png}
+
+
 \subsection{Simulation}
+
+
+\textbf{Initial condition 1: $\phi = 10^\circ$, $x = 0$}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{simulation/init1_1.png}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{simulation/init1_2.png}
+    \caption{}
+  \end{subfigure}
+\end{figure}
+
+\textbf{Initial condition 2: $\phi = 45^\circ$, $x = 0.5$}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{simulation/init2_1.png}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{simulation/init2_2.png}
+    \caption{}
+  \end{subfigure}
+\end{figure}
+
+\newpage
+
+\textbf{Initial condition 3: $\phi = -135^\circ$, $x = 0.5$}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{simulation/init3_1.png}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{simulation/init3_2.png}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{simulation/init3_3.png}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{simulation/init3_4.png}
+    \caption{}
+  \end{subfigure}
+\end{figure}
+
+
 \subsection{Discussion}
 As we can see, both Newton-Euler and Lagrange-Euler methods provide us with the same solutions.
 \end{document}
