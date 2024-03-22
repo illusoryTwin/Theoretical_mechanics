@@ -55,15 +55,15 @@ The plots of the experiments are shown below.
 
 \textbf{Initial condition 1: $\phi = 10^\circ$, $x = 0$}
 
-\includegraphics*[scale=0.5]{init_1.png}
+\includegraphics*[scale=0.5]{graphics/init_1.png}
 
 \textbf{Initial condition 2: $\phi = 45^\circ$, $x = 0.5$}
 
-\includegraphics*[scale=0.5]{init_2.png}
+\includegraphics*[scale=0.5]{graphics/init_2.png}
 
 \textbf{Initial condition 3: $\phi = -135^\circ$, $x = 0.5$}
 
-\includegraphics*[scale=0.5]{init_3.png}
+\includegraphics*[scale=0.5]{graphics/init_3.png}
 
 
 \section{Task Explanation. Analytical solution}
@@ -91,10 +91,27 @@ Solve computationally with sympy.
 Substitute constants (e.g., masses) with the values we measured.
 
 \section{Plots}
-\includegraphics*[scale=0.25]{results.png}
+\includegraphics*[scale=0.25]{graphics/results.png}
+
+\textbf{Initial condition 1: $\phi = 10^\circ$, $x = 0$}
+
+\includegraphics*[scale=0.25]{graphics/res_comparison_init1.png}
+
+
+\textbf{Initial condition 1: $\phi = 45^\circ$, $x = 0.25$}
+
+\includegraphics*[scale=0.25]{graphics/res_comparison_init2.png}
+
+
+\textbf{Initial condition 1: $\phi = -135^\circ$, $x = 0.25$}
+
+\includegraphics*[scale=0.25]{graphics/res_comparison_init3.png}
+
 \section{Discussion}
 
-Friction is estimated conditionally. We do not have precise coefficients for friction or air resistance. For more accurate results, this will be necessary. Also, the consideration of the mass of the cart is important."
+From the plots, we observe discrepancies in the positions of x, while $\phi$ is predicted quite accurately. Although we made assumptions and theoretical suggestions concerning the coefficients of friction and air resistance, their precise values are unknown to us. For more accurate results, determining these values is necessary. Additionally, in our experiment, we neglected the mass of the rod due to its relatively small value. However, for future, more accurate research, considering this mass might be reasonable.
+
+Also, the issue with x might arise from high friction in the bearings, causing the cart to deviate slightly from its initial position. Determining this friction coefficient in practice is a non-trivial task, which could be a subject for further research.
 
 \section{Team management:} Mikhail and I changed the tape in the cart-pole system to overcome the excessively high error. We connected an Arduino to it to obtain the required measurements of the stand. Timur, Leonid, Andrey, Elina, Reza, and I measured the values, while Mikhail and Yura solved the dynamics, data parsing - me.
 
