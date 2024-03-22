@@ -1,141 +1,3 @@
-% \documentclass{article}
-% \usepackage{graphicx} % Required for inserting images
-% \usepackage{hyperref}
-% \usepackage{caption} % For custom captions
-% \usepackage{amsmath}
-% \usepackage{multicol}
-
-% \title{Theoretical Mechanics: Big Homework 2}
-% \author{Ekaterina Mozhegova}
-% \date{March 13, 2024}
-
-% \begin{document}
-
-% \maketitle
-
-% \section{Link}
-% \href{https://github.com/illusoryTwin/Theoretical_mechanics/tree/master/hw7}{Link to the github repository containing all the materials}
-
-
-% \section{Task Description}
-
-% \begin{enumerate}
-%     \item Obtain the required measurements of the stand (like needed masses, lengths and so on).
-%     \item Gather the positions and velocities of the stand. You should run the same experiment 3 times each. 
-    
-%     Initial conditions:
-%     \begin{itemize}
-%       \footnotesize
-%       \item $x = 0,\ \phi = 15^\circ,\ \dot{x} = 0,\ \dot{\phi} = 0,\ t=0$;
-%       \item $x = 0.25\ m,\ \phi = 45^\circ,\ \dot{x} = 0,\ \dot{\phi} = 0,\ t=0$;
-%       \item $x = 0.25\ m,\ \phi = -135^\circ,\ \dot{x} = 0,\ \dot{\phi} = 0,\ t=0$;
-%     \end{itemize}
-%     \item Substitute a real data to your math model from HW 7, 8 (you can choose any method your like) and compare the results (propose and justify the metric).
-%     \item Explain, what affects the difference between math model and real data. Is it difference significant? 
-%     \item If so, change the model (add new forces, change the object representation), gather new needed data and compare it again.
-%     \item Make a conclusion.
-% \end{enumerate}
-
-  
-% \section{What report should contain}
-% \begin{frame}[t]{What report should contain}
-% \vspace{-0.4cm}
-% \begin{itemize}
-% \item The list of used tools and applications (I gathered a trajectory dataset using $x$ tool), etc.
-% \item The list of data you gathered from stand and how did you do it.
-% \item Show how you conducted experiments. Is there any difference when you did the same experiment? Show it using plots and/or other metrics like $std,\ mse$ and so on.
-% \item Show the way how you chose the metrics for trajectory comparison, how you justify the answer.
-% \item If the error is too large, explain how you wanted to change your model and why you chose such path.
-% \item Summarize your experience.
-% \end{itemize}
-% \end{frame}
-  
-
-% \section{Hints}
-% \begin{frame}[t]{Hints}
-% \vspace{-0.4cm}
-% \begin{itemize}
-%     \item To determine inertia, you can create (or find) a CAD model and take data from it, or you can do an actual experiment to determine it.
-%     \item When you perform the experiment, you can make a template (for example, a piece of paper with a 10-degree angle).
-%     \item For choosing a metric for how to compare trajectories, you can start with the concept of least squares.
-%     \item Some of the data for the math model can be taken from the stand itself (e.g., friction).
-%     \item Feel free to do a literature review to find good ideas. But you must show exactly what you used.
-% \end{itemize}
-% \end{frame}
-
-% % \includegraphics*[scale=0.5]{hw7_task1.png}{\centering}
-% \subsection{Task Explanation}
-
-% \textbf{Research object:} A system of 2 rods: rod 1 and rod 2\\
-% \textbf{Motion:} Rod 1 - rotational and plane motions, rod 2 - rotational and plane motions\\
-% \textbf{Force analysis:} $G_1 = m_1 g$, $G_2 = m_2 g$\\
-% \textbf{Solution:}
-
-% \[T = A \text{, where } T = \sum T_i, A = \sum A_i\]
-% \[T = T_1 + T_2 = 2T_1 \text{(due to the system's symmetry)}\] 
-% \[T_1 = \dfrac{m v_d^2}{2} + \dfrac{J \omega^2}{2} = \dfrac{m v_d^2}{2} + \dfrac{m \rho^2 \omega^2}{2}\] (plane motion  and rotational motion)
-% \[v_d^2 = \dot y_d^2 + \dot x_d^2\]
-
-
-
-% \begin{align*}
-%     y_d &= l \sin(\alpha) & \dot{y}_d &= l \dot{\alpha} \cos(\alpha) \\
-%     x_d &= l \cos(\alpha) & \dot{x}_d &= -l \dot{\alpha} \sin(\alpha)
-% \end{align*}
-
-
-% \[ \dot \alpha = \omega = \dot \alpha = \dfrac{v_b}{2l \cos \alpha}\]
-
-% \[V_d^2 = (l \cos(\alpha) \dot{\alpha})^2 + (-l \sin(\alpha) \dot{\alpha})^2 = l^2 (\dot{\alpha})^2 = l \omega^2\]
-
-% \[V_d^2 = l^2 \omega^2 = l^2 \cdot \frac{v_b^2}{4l^2 \cos^2(\alpha)}\]
-
-% \[T_\text{rot} = \dfrac{J \omega^2}{2} = \dfrac{m \rho^2 \omega^2}{2} = \dfrac{m \rho^2}{2} \dfrac{V_b^2}{4l^2 \cos(\alpha)^2}\]
-
-% \[T_1 = T + T_{\text{rot}} = \frac{mV_d^2}{2} + \frac{J \omega^2}{2} = \frac{m V_b^2}{2 \cdot 4 \cos^2(\alpha)} + \frac{m \rho^2 V_b^2}{2 \cdot 4l^2 \cos^2(\alpha)}\]
-
-% \[T_\text{tot} = 2T_1 = 2 (\frac{m V_b^2}{2 \cdot 4 \cos^2(\alpha)} + \frac{m \rho^2 V_b^2}{2 \cdot 4l^2 \cos^2(\alpha)}) = \frac{m V_b^2}{4 \cos^2(\alpha)} + \frac{m \rho^2 V_b^2}{4l^2 \cos^2(\alpha)}\]
-
-% \textbf{Work:}
-
-% 2 gravitational forces do job (of a rod 1 and of a rod 2).
-
-% Due to the symmetry:
-
-% \[A_\text{tot} = 2A_G = 2 mg \Delta h = 2mg ( \frac{h}{2} - l \sin(\alpha))\]
- 
-% \begin{enumerate}
-%   \item When B hits the floor, $\alpha = 0$, so $A_\text{tot} = 2 m g \frac{h}{2} = mgh$
-%     \begin{center}
-%       For $\alpha = 0$ we have: $\cos(\alpha) = 1$, $\sin(\alpha) = 0$.
-%     \end{center}
-%     \[ \frac{m V_b^2}{4 \cos^2(\alpha)} + \frac{m \rho^2 V_b^2}{4l^2 \cos^2(\alpha)} = mgh\]
-%     \[ \frac{m V_b^2}{4 \cdot 1} (1 + \frac{\rho^2}{l^2}) = mgh\]
-%     \[ \frac{V_b^2}{4} (\frac{l^2 + \rho^2}{l^2}) = gh\]
-%     \[ V_b = \sqrt{\dfrac{4l^2gh}{l^2 + \rho^2}} = 2l \sqrt{\dfrac{gh}{l^2 + \rho^2}}\]
-%     \[ \text{So, } V_b = 2l \sqrt{\dfrac{gh}{l^2 + \rho^2}}\]
-
-
-%   \item When B  is at the distance $ \frac{1}{2} h$ from the floor. 
-%     \[\sin(\alpha) = \dfrac{\frac{h}{2}}{2l} = \dfrac{h}{4l}\]
-%     \[\text{Thus, } \cos(\alpha)^2 = 1 - \sin(\alpha)^2 = \dfrac{16l^2 - h^2}{16l^2}\]
-%     \[ \frac{m V_b^2}{4 \cdot \dfrac{16l^2 - h^2}{16l^2}} (\dfrac{\rho^2 + l^2}{l^2}) = 2mg(\frac{h}{2} - l \sin(\alpha))\]
-%     \[ \frac{m V_b^2}{\dfrac{16l^2 - h^2}{4l^2}} (\dfrac{\rho^2 + l^2}{l^2}) = 2mg(\frac{h}{2} - l \frac{h}{4l})\]
-%     \[ \frac{4 mV_b^2 (l^2+\rho^2)}{16l^2 - h^2} = \dfrac{mgh}{2}\]
-%     \[ \frac{4 V_b^2 (l^2+\rho^2)}{16l^2 - h^2} = \dfrac{gh}{2}\]
-%     \[ V_b = \sqrt{\dfrac{gh(16l^2-h^2)}{2 \cdot 4(l^2 + \rho^2)}} = \dfrac{1}{2} \sqrt{\dfrac{gh(16l^2 - h^2)}{2(l^2 + \rho^2)}}\]
-%     \[ \text{So, } V_b = \dfrac{1}{2} \sqrt{\dfrac{gh(16l^2 - h^2)}{2(l^2 + \rho^2)}}\]
-% \end{enumerate}
-
-% \textbf{Answer:}
-% \begin{enumerate}
-%   \item \[V_b = 2l \sqrt{\dfrac{gh}{l^2 + \rho^2}}\]
-%   \item \[V_b = \dfrac{1}{2} \sqrt{\dfrac{gh(16l^2 - h^2)}{2(l^2 + \rho^2)}}\]
-% \end{enumerate}
-
-% \section{Task 2}
-
-% \section{Task Description}
 
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
@@ -154,6 +16,7 @@
 
 \section{Link}
 \href{https://github.com/illusoryTwin/Theoretical_mechanics/tree/master/hw7}{Link to the GitHub repository containing all the materials}
+\href{https://colab.research.google.com/drive/1DiKK_ZvTILnPT2P7sJNKj1a4t78OqBTw?usp=sharing}{Colab}
 
 \section{Task Description}
 \begin{enumerate}
@@ -183,23 +46,56 @@
 \item Summarize your experience.
 \end{itemize}
 
-\subsection{Hints}
-\begin{itemize}
-    \item To determine inertia, you can create (or find) a CAD model and take data from it, or you can do an actual experiment to determine it.
-    \item When you perform the experiment, you can make a template (for example, a piece of paper with a 10-degree angle).
-    \item For choosing a metric for how to compare trajectories, you can start with the concept of least squares.
-    \item Some of the data for the math model can be taken from the stand itself (e.g., friction).
-    \item Feel free to do a literature review to find good ideas. But you must show exactly what you used.
-\end{itemize}
+\section{Task Explanation. Practical solution}
 
-\section{Task Explanation}
+For each of the three initial conditions, we conducted 3 tests for rach condition. 
+After data parsing, we calculated the mean value of angle and position. 
+
+The plots of the experiments are shown below.
+
+\textbf{Initial condition 1: $\phi = 10^\circ$, $x = 0$}
+
+\includegraphics*[scale=0.5]{init_1.png}
+
+\textbf{Initial condition 2: $\phi = 45^\circ$, $x = 0.5$}
+
+\includegraphics*[scale=0.5]{init_2.png}
+
+\textbf{Initial condition 3: $\phi = -135^\circ$, $x = 0.5$}
+
+\includegraphics*[scale=0.5]{init_3.png}
+
+
+\section{Task Explanation. Analytical solution}
 
 \textbf{Research object:} A system of 2 rods: rod 1 and rod 2\\
 \textbf{Motion:} Rod 1 - rotational and plane motions, rod 2 - rotational and plane motions\\
-\textbf{Force analysis:} $G_1 = m_1 g$, $G_2 = m_2 g$\\
+\textbf{Force analysis:} $G_1 = m_1 g$, $G_2 = m_2 g$, $F_\text{fr}$, $F_\text{drag}$\\
 \textbf{Solution:}
 
+Let's solve the system using Newton-Euler method.
+
+To accurately model the real-world system, it is necessary to incorporate air drag and friction into our dynamics equations.
+
+\begin{align*}
+  \text{eq1:} & \quad -T \sin(\phi) + m_1 \ddot{x} + k m_1 g \tanh(1000 \dot{x}) = 0 \\
+  \text{eq2:} & \quad N - m_1 g - T \cos(\phi) = 0 \\
+  \text{eq3:} & \quad T \sin(\phi) + m_2 \left(\ddot{\phi} \cdot l \cos(\phi) - \dot{\phi}^2 \cdot l \sin(\phi) + \ddot{x}\right) + k_{\text{air}} \sin(\phi) \tanh(1000 \dot{x}) = 0 \\
+  \text{eq4:} & \quad T \cos(\phi) - m_2 g - m_2 \left(\ddot{\phi} \cdot l \sin(\phi) + \dot{\phi}^2 \cdot l \cos(\phi)\right) + k_{\text{air}} \cos(\phi) \tanh(1000 \dot{x}) = 0
+\end{align*}
+  
+$F_\text{fr}$ changes the sign, and to represent this change of sign, we introduce $\tanh(1000 \dot{x})$.
+
+Solve computationally with sympy.
+
+Substitute constants (e.g., masses) with the values we measured.
+
 \section{Plots}
-\section{Simulation}
+\includegraphics*[scale=0.25]{results.png}
+\section{Discussion}
+
+Friction is estimated conditionally. We do not have precise coefficients for friction or air resistance. For more accurate results, this will be necessary. Also, the consideration of the mass of the cart is important."
+
+\section{Team management:} Mikhail and I changed the tape in the cart-pole system to overcome the excessively high error. We connected an Arduino to it to obtain the required measurements of the stand. Timur, Leonid, Andrey, Elina, Reza, and I measured the values, while Mikhail and Yura solved the dynamics, data parsing - me.
 
 \end{document}
