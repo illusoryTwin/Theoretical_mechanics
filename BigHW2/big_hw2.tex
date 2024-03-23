@@ -76,17 +76,17 @@ The plotted values are as follows.\\
 
 \textbf{Initial condition 1: $\phi = 10^\circ$, $x = 0$}
 
-\includegraphics*[scale=0.5]{graphics/init_1.png}
+\includegraphics*[scale=0.5]{plots/init1.png}
 
 \textbf{Initial condition 2: $\phi = 45^\circ$, $x = 0.5$}
 
-\includegraphics*[scale=0.5]{graphics/init_2.png}\\\\
+\includegraphics*[scale=0.5]{plots/init2.png}\\\\
 
 \newpage 
 
 \textbf{Initial condition 3: $\phi = -135^\circ$, $x = 0.5$}
 
-\includegraphics*[scale=0.5]{graphics/init_3.png}
+\includegraphics*[scale=0.5]{plots/init3.png}
 
 \section{Task Explanation. Analytical solution}
 
@@ -108,30 +108,42 @@ To accurately model the real-world system, it is necessary to incorporate air dr
   
 $F_\text{fr}$ changes the sign, and to handle it, we introduce $\tanh(1000 \dot{x})$.
 
-Solve computationally with sympy.
-
 Substitute constants (e.g., masses) with the values we measured.
 
+\begin{enumerate}
+  \item Mass of the rod's head - $154 \text{g}$.
+
+  \item Mass of the cart - $266 \text{g}$.
+
+  \item The mass of the rod, $11 \text{g}$, we can assume negligibly small.
+\end{enumerate}
+
+Take the average value of $k_\text{air}$ in indoor conditions similar to ours, $k_\text{air} = 0.5$ and $k = 0.2$.
+
+Solve computationally with sympy.
+
 \section{Plots}
-\includegraphics*[scale=0.25]{graphics/results.png}
+\includegraphics*[scale=0.25]{plots/analytical_sol_plots.png}
 
 \textbf{Initial condition 1: $\phi = 10^\circ$, $x = 0$}
 
-\includegraphics*[scale=0.25]{graphics/res_comparison_init1.png}
+\includegraphics*[scale=0.45]{plots/res_comparison_init1.png}
 
 
 \textbf{Initial condition 1: $\phi = 45^\circ$, $x = 0.25$}
 
-\includegraphics*[scale=0.25]{graphics/res_comparison_init2.png}
+\includegraphics*[scale=0.45]{plots/res_comparison_init2.png}
 
 
 \textbf{Initial condition 1: $\phi = -135^\circ$, $x = 0.25$}
 
-\includegraphics*[scale=0.25]{graphics/res_comparison_init3.png}
+\includegraphics*[scale=0.45]{plots/res_comparison_init3.png}
 
 \section{Discussion}
 
-From the plots, we observe discrepancies in the positions of x, while $\phi$ is predicted quite accurately. Although we made assumptions and theoretical suggestions concerning the coefficients of friction and air resistance, their precise values are unknown to us. For more accurate results, determining these values is necessary. Additionally, in our experiment, we neglected the mass of the rod due to its relatively small value. However, for future, more accurate research, considering this mass might be reasonable.
+From the plots, we observe discrepancies in the positions of x, while $\phi$ is predicted quite accurately. Although we made assumptions and theoretical suggestions concerning the coefficients of friction and air resistance, their precise values are unknown to us. For more accurate results, determining these values is necessary. 
+
+Additionally, in our experiment, we neglected the mass of the rod due to its relatively small value. However, for future, more accurate research, considering this mass might be reasonable.
 
 Also, the issue with x might arise from high friction in the bearings, causing the cart to deviate slightly from its initial position. Determining this friction coefficient in practice is a non-trivial task, which could be a subject for further research.
 
