@@ -51,17 +51,28 @@ Python was used for data handling and solving dynamics.
 Arduino was used for obtaining the data from the encoders of the stand.
 
 \section{Methodology}
+
+\subsection{Data retrieving}
+
 To measure the state (position and velocity) of our system, we used the data from the encoders of the stand. 
 Firstly, we changed the encoders tape to a new one since the suggested one provided us with noisy, inaccurate results.
 In GitHub, you can find the Arduino script for reading the data from the encoders.
-For each of hte encoders we measured the max range of the values to switch to the desired unit of measure. 
 
-\section{Task Explanation. Practical solution}
+For both encoders, we measured the maximum range of values. Knowing the length of the rails 
+(428 mm) and the maximum possible rotation angle of the rod ($360^\circ$), we can convert to the desired unit of measurement.
 
-For each of the three initial conditions, we conducted 3 tests for rach condition. 
-After data parsing, we calculated the mean value of angle and position. 
+We conducted 3 experiments for each set of initial conditions and obtained datasets of 200 values for each experiment.
 
-The plots of the experiments are shown below.
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.21]{data/measurements.png}
+  \caption{Example: extract of the obtained data table}
+\end{figure}
+
+\subsection{Data visualization}
+For each set of initial conditions, we calculated the mean value of the state (angle and position) from three experiments. 
+
+The plotted values are as follows.\\
 
 \textbf{Initial condition 1: $\phi = 10^\circ$, $x = 0$}
 
@@ -69,12 +80,13 @@ The plots of the experiments are shown below.
 
 \textbf{Initial condition 2: $\phi = 45^\circ$, $x = 0.5$}
 
-\includegraphics*[scale=0.5]{graphics/init_2.png}
+\includegraphics*[scale=0.5]{graphics/init_2.png}\\\\
+
+\newpage 
 
 \textbf{Initial condition 3: $\phi = -135^\circ$, $x = 0.5$}
 
 \includegraphics*[scale=0.5]{graphics/init_3.png}
-
 
 \section{Task Explanation. Analytical solution}
 
@@ -94,7 +106,7 @@ To accurately model the real-world system, it is necessary to incorporate air dr
   \text{eq4:} & \quad T \cos(\phi) - m_2 g - m_2 \left(\ddot{\phi} \cdot l \sin(\phi) + \dot{\phi}^2 \cdot l \cos(\phi)\right) + k_{\text{air}} \cos(\phi) \tanh(1000 \dot{x}) = 0
 \end{align*}
   
-$F_\text{fr}$ changes the sign, and to represent this change of sign, we introduce $\tanh(1000 \dot{x})$.
+$F_\text{fr}$ changes the sign, and to handle it, we introduce $\tanh(1000 \dot{x})$.
 
 Solve computationally with sympy.
 
